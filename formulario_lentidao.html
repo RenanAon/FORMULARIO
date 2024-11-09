@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulários de Atendimento</title>
+   <style>
+        /* Cores gerais */
+        :root {
+            --azul-claro: #e0f7fa;
+            --azul-medio: #0288d1;
+            --azul-escuro: #01579b;
+            --dourado: #FFD700;
+            --amarelo: #FFEB3B;
+            --cinza-claro: #f9f9f9;
+            --borda: #ccc;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--azul-claro);
+            padding: 20px;
+            color: var(--azul-escuro);
+        }
+
+        h2, h3 {
+            color: var(--azul-escuro);
+        }
+
+        /* Estilo do container do formulário */
+        .form-container {
+            display: none;
+            background-color: var(--cinza-claro);
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: var(--azul-escuro);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid var(--borda);
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        /* Estilo do botão */
+        button {
+            background-color: var(--dourado);
+            color: var(--azul-escuro);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: var(--amarelo);
+        }
+
+        /* Estilo do contêiner de resumo */
+        .summary-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--cinza-claro);
+            border: 1px solid var(--borda);
+            border-radius: 8px;
+        }
+
+        /* Estilo do menu de seleção */
+        select {
+            background-color: var(--azul-medio);
+            color: white;
+        }
+    </style>
+    </style>
+</head>
+<body>
+    <h2>Formulários de Atendimento</h2>
+    
+    <label for="tipo-atendimento">Escolha o tipo de atendimento:</label>
+    <select id="tipo-atendimento" onchange="showForm()">
+        <option value="">Selecione...</option>
+        <option value="lenta">Lentidão</option>
+        <option value="oscilacao_quedas">Oscilação/Quedas</option>
+        <option value="problemas_redes_sociais">Problemas em Redes Sociais/Sites</option>
+        <option value="iptv_particular">Problemas IPTV Particular</option>
+        <option value="redirecionamento_portas">Redirecionamento de Portas</option>
+        <option value="sem_conexao">Sem Conexão</option>
+        <option value="conf_roteador_particular">Configuração Roteador Particular</option>
+        <option value="troca_conf_wifi">Troca de Configuração Wi-Fi</option>
+    </select>
+
+    <!-- Formulário de Lentidão -->
+    <div class="form-container" id="form-lenta">
+        <h3>Lentidão</h3>
+        <div class="form-group">
+            <label for="nome_lenta">Nome completo:</label>
+            <input type="text" id="nome_lenta">
+        </div>
+        <div class="form-group">
+            <label for="cpf_lenta">CPF:</label>
+            <input type="text" id="cpf_lenta">
+        </div>
+        <div class="form-group">
+            <label for="usuario_pppoe_lenta">Usuário PPPOE da conexão:</label>
+            <input type="text" id="usuario_pppoe_lenta">
+        </div>
+        <div class="form-group">
+            <label for="telefones_lenta">2 Telefones atualizados:</label>
+            <input type="text" id="telefones_lenta">
+        </div>
+        <div class="form-group">
+            <label for="horario_contato_lenta">Melhor horário para contato:</label>
+            <input type="text" id="horario_contato_lenta">
+        </div>
+        <div class="form-group">
+            <label for="preferencia_contato_lenta">Prefere contato WhatsApp ou Telefonico?:</label>
+            <input type="text" id="preferencia_contato_lenta">
+        </div>
+        <div class="form-group">
+            <label for="reclamacao_lenta">Reclamação do assinante:</label>
+            <input type="text" id="reclamacao_lenta">
+        </div>
+        <div class="form-group">
+            <label for="teste_velocidade_lenta">Realizou teste de velocidade online?:</label>
+            <input type="text" id="teste_velocidade_lenta">
+        </div>
+        <div class="form-group">
+            <label for="horario_lenta">Problema ocorre em algum horário específico?:</label>
+            <input type="text" id="horario_lenta">
+        </div>
+        <div class="form-group">
+            <label for="dispositivo_lenta">Em qual dispositivo nota mais lentidão?:</label>
+            <input type="text" id="dispositivo_lenta">
+        </div>
+        <div class="form-group">
+            <label for="roteador_lenta">Possui mais de um roteador?:</label>
+            <input type="text" id="roteador_lenta">
+        </div>
+        <div class="form-group">
+            <label for="roteador_lenta_modelo">Se sim, qual apresenta lentidão?:</label>
+            <input type="text" id="roteador_lenta_modelo">
+        </div>
+        <div class="form-group">
+            <label for="tipo_roteador_lenta">Roteador particular ou comodato?:</label>
+            <input type="text" id="tipo_roteador_lenta">
+        </div>
+        <div class="form-group">
+            <label for="site_lenta">Lentidão em site específico?:</label>
+            <input type="text" id="site_lenta">
+        </div>
+        
+        <button type="button" class="btn" onclick="generateSummary('lenta')">Gerar Resumo</button>
+    </div>
+
+    <!-- Formulário de Oscilação/Quedas -->
+    <div class="form-container" id="form-oscilacao_quedas">
+        <h3>Oscilação/Quedas</h3>
+        <div class="form-group">
+            <label for="nome_oscilacao">Nome completo:</label>
+            <input type="text" id="nome_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="cpf_oscilacao">CPF:</label>
+            <input type="text" id="cpf_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="usuario_pppoe_oscilacao">Usuário PPPOE da conexão:</label>
+            <input type="text" id="usuario_pppoe_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="telefones_oscilacao">2 Telefones atualizados:</label>
+            <input type="text" id="telefones_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="horario_contato_oscilacao">Melhor horário para contato:</label>
+            <input type="text" id="horario_contato_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="preferencia_contato_oscilacao">Prefere contato WhatsApp ou Telefonico?:</label>
+            <input type="text" id="preferencia_contato_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="reclamacao_oscilacao">Reclamação do assinante:</label>
+            <input type="text" id="reclamacao_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="sinal_oscilacao">Sinal atual?:</label>
+            <input type="text" id="sinal_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="roteador_oscilacao">Possui mais de um roteador?:</label>
+            <input type="text" id="roteador_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="tipo_roteador_oscilacao">Roteador particular ou comodato?:</label>
+            <input type="text" id="tipo_roteador_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="sinal_caixa_oscilacao">Qual o melhor sinal da caixa que o assinante está?:</label>
+            <input type="text" id="sinal_caixa_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="cordao_optico_oscilacao">Cordão óptico está sem obstrução e bem conectado?:</label>
+            <input type="text" id="cordao_optico_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="quedas_autenticacao_oscilacao">Quantas quedas de autenticação ocorreram hoje?:</label>
+            <input type="text" id="quedas_autenticacao_oscilacao">
+        </div>
+        <div class="form-group">
+            <label for="equipamentos_oscilacao">Equipamentos Roteador/ONU ou ONU estão ligados diretamente na tomada ou possuem adaptador de energia?:</label>
+            <input type="text" id="equipamentos_oscilacao">
+        </div>
+        
+        <button type="button" class="btn" onclick="generateSummary('oscilacao_quedas')">Gerar Resumo</button>
+    </div>
+
+<!-- Formulário de Problemas em Redes Sociais/Sites -->
+<div class="form-container" id="form-problemas_redes_sociais" style="display: none;">
+    <h3>Problemas em Redes Sociais/Sites</h3>
+    <div class="form-group">
+        <label for="nome_redes_sociais">Nome completo:</label>
+        <input type="text" id="nome_redes_sociais">
+    </div>
+    <div class="form-group">
+        <label for="cpf_redes_sociais">CPF:</label>
+        <input type="text" id="cpf_redes_sociais">
+    </div>
+    <div class="form-group">
+        <label for="usuario_pppoe_redes_sociais">Usuário PPPOE da conexão:</label>
+        <input type="text" id="usuario_pppoe_redes_sociais">
+    </div>
+    <div class="form-group">
+        <label for="telefones_redes_sociais">2 Telefones atualizados:</label>
+        <input type="text" id="telefones_redes_sociais">
+    </div>
+    <div class="form-group">
+        <label for="horario_contato_redes_sociais">Melhor horário para contato:</label>
+        <input type="text" id="horario_contato_redes_sociais">
+    </div>
+    <div class="form-group">
+        <label for="preferencia_contato_redes_sociais">Prefere contato WhatsApp ou Telefônico?:</label>
+        <input type="text" id="preferencia_contato_redes_sociais">
+    </div>
+    <div class="form-group">
+        <label for="reclamacao_redes_sociais">Reclamação do assinante:</label>
+        <textarea id="reclamacao_redes_sociais"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="site_problema_redes_sociais">Qual site ocorre problema?:</label>
+        <input type="text" id="site_problema_redes_sociais">
+    </div>
+    <div class="form-group">
+        <label for="dispositivo_especifico_redes_sociais">Site não funciona em todos os dispositivos ou apenas algum específico?:</label>
+        <input type="text" id="dispositivo_especifico_redes_sociais" placeholder="Se sim, qual dispositivo?">
+    </div>
+    <div class="form-group">
+        <label for="inicio_problema_redes_sociais">Quando começou a ocorrer o problema?:</label>
+        <input type="text" id="inicio_problema_redes_sociais" placeholder="Data/hora aproximada">
+    </div>
+    
+    <button type="button" class="btn" onclick="generateSummary('problemas_redes_sociais')">Gerar Resumo</button>
+</div>
+
+<!-- Formulário de Problemas IPTV Particular -->
+<div class="form-container" id="form-iptv_particular" style="display: none;">
+    <h3>Problemas IPTV Particular</h3>
+    <div class="form-group">
+        <label for="nome_iptv">Nome completo:</label>
+        <input type="text" id="nome_iptv">
+    </div>
+    <div class="form-group">
+        <label for="cpf_iptv">CPF:</label>
+        <input type="text" id="cpf_iptv">
+    </div>
+    <div class="form-group">
+        <label for="usuario_pppoe_iptv">Usuário PPPOE da conexão:</label>
+        <input type="text" id="usuario_pppoe_iptv">
+    </div>
+    <div class="form-group">
+        <label for="telefones_iptv">2 Telefones atualizados:</label>
+        <input type="text" id="telefones_iptv">
+    </div>
+    <div class="form-group">
+        <label for="horario_contato_iptv">Melhor horário para contato:</label>
+        <input type="text" id="horario_contato_iptv">
+    </div>
+    <div class="form-group">
+        <label for="preferencia_contato_iptv">Prefere contato WhatsApp ou Telefônico?:</label>
+        <input type="text" id="preferencia_contato_iptv">
+    </div>
+    <div class="form-group">
+        <label for="reclamacao_iptv">Reclamação do assinante:</label>
+        <textarea id="reclamacao_iptv"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="dispositivo_iptv">Assinante utiliza o aplicativo IPTV em BOX ou TV SMART?</label>
+        <input type="text" id="dispositivo_iptv" placeholder="Caso seja BOX, qual a marca do aparelho?">
+    </div>
+    <div class="form-group">
+        <label for="nome_app_iptv">Qual o nome do aplicativo que o assinante utiliza?:</label>
+        <input type="text" id="nome_app_iptv">
+    </div>
+    <div class="form-group">
+        <label for="inicio_problema_iptv">Quando começou a ocorrer o problema?:</label>
+        <input type="text" id="inicio_problema_iptv" placeholder="Data/hora aproximada">
+    </div>
+    <div class="form-group">
+        <label for="horario_especifico_iptv">Tem algum horário específico que ocorre o problema?:</label>
+        <input type="text" id="horario_especifico_iptv">
+    </div>
+    <div class="form-group">
+        <label for="url_servidor_iptv">Qual a URL do servidor IPTV?:</label>
+        <input type="text" id="url_servidor_iptv">
+    </div>
+    
+    <button type="button" class="btn" onclick="generateSummary('iptv_particular')">Gerar Resumo</button>
+</div>
+
+<!-- Formulário de Redirecionamento de Portas -->
+<div class="form-container" id="form-redirecionamento_portas" style="display: none;">
+    <h3>Redirecionamento de Portas</h3>
+    <div class="form-group">
+        <label for="nome_portas">Nome completo:</label>
+        <input type="text" id="nome_portas">
+    </div>
+    <div class="form-group">
+        <label for="cpf_portas">CPF:</label>
+        <input type="text" id="cpf_portas">
+    </div>
+    <div class="form-group">
+        <label for="usuario_pppoe_portas">Usuário PPPOE da conexão:</label>
+        <input type="text" id="usuario_pppoe_portas">
+    </div>
+    <div class="form-group">
+        <label for="telefones_portas">2 Telefones atualizados:</label>
+        <input type="text" id="telefones_portas">
+    </div>
+    <div class="form-group">
+        <label for="horario_contato_portas">Melhor horário para contato:</label>
+        <input type="text" id="horario_contato_portas">
+    </div>
+    <div class="form-group">
+        <label for="preferencia_contato_portas">Prefere contato WhatsApp ou Telefônico?:</label>
+        <input type="text" id="preferencia_contato_portas">
+    </div>
+    <div class="form-group">
+        <label for="dispositivo_portas">Qual o nome e marca do dispositivo que necessita de abertura de portas?:</label>
+        <input type="text" id="dispositivo_portas">
+    </div>
+    <div class="form-group">
+        <label for="porta_numero">Qual a porta?:</label>
+        <input type="text" id="porta_numero">
+    </div>
+    <div class="form-group">
+        <label for="ip_interno_portas">Qual o endereço de IP Interno do dispositivo?:</label>
+        <input type="text" id="ip_interno_portas" placeholder="Caso cliente não saiba, informar que cliente não soube responder">
+    </div>
+    <div class="form-group">
+        <label for="ip_fixo_portas">Cliente possui IP FIXO?:</label>
+        <input type="text" id="ip_fixo_portas">
+    </div>
+    
+    <button type="button" class="btn" onclick="generateSummary('redirecionamento_portas')">Gerar Resumo</button>
+</div>
+
+<!-- Formulário de Sem Conexão -->
+<div class="form-container" id="form-sem_conexao" style="display: none;">
+    <h3>Sem Conexão</h3>
+    <div class="form-group">
+        <label for="nome_sem_conexao">Nome completo:</label>
+        <input type="text" id="nome_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="cpf_sem_conexao">CPF:</label>
+        <input type="text" id="cpf_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="usuario_pppoe_sem_conexao">Usuário PPPOE da conexão:</label>
+        <input type="text" id="usuario_pppoe_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="telefones_sem_conexao">2 Telefones atualizados:</label>
+        <input type="text" id="telefones_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="horario_contato_sem_conexao">Melhor horário para contato:</label>
+        <input type="text" id="horario_contato_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="preferencia_contato_sem_conexao">Prefere contato WhatsApp ou Telefônico?:</label>
+        <input type="text" id="preferencia_contato_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="led_vermelho_sem_conexao">Conexão possui led vermelho?:</label>
+        <input type="text" id="led_vermelho_sem_conexao" placeholder="Se sim, questionar sobre manutenção em postes ou rompimento de fio">
+    </div>
+    <div class="form-group">
+        <label for="patch_cord_sem_conexao">Patch cord está na entrada WAN do roteador?:</label>
+        <input type="text" id="patch_cord_sem_conexao" placeholder="Caso o cliente tenha ONU/Roteador">
+    </div>
+    <div class="form-group">
+        <label for="sinal_sem_conexao">Conexão possui sinal?:</label>
+        <input type="text" id="sinal_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="autenticacao_sem_conexao">Conexão possui autenticação?:</label>
+        <input type="text" id="autenticacao_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="rede_wifi_aparece_sem_conexao">Nome da rede Wi-Fi aparece para o assinante?:</label>
+        <input type="text" id="rede_wifi_aparece_sem_conexao">
+    </div>
+    <div class="form-group">
+        <label for="mais_de_um_roteador_sem_conexao">Cliente possui mais de um roteador?:</label>
+        <input type="text" id="mais_de_um_roteador_sem_conexao" placeholder="Se sim, qual está sem conexão?">
+    </div>
+    
+    <button type="button" class="btn" onclick="generateSummary('sem_conexao')">Gerar Resumo</button>
+</div>
+
+<!-- Formulário de Configuração Roteador Particular -->
+<div class="form-container" id="form-conf_roteador_particular" style="display: none;">
+    <h3>Configuração Roteador Particular</h3>
+    <div class="form-group">
+        <label for="nome_conf_roteador_particular">Nome completo:</label>
+        <input type="text" id="nome_conf_roteador_particular">
+    </div>
+    <div class="form-group">
+        <label for="cpf_conf_roteador_particular">CPF:</label>
+        <input type="text" id="cpf_conf_roteador_particular">
+    </div>
+    <div class="form-group">
+        <label for="usuario_pppoe_conf_roteador_particular">Usuário PPPOE da conexão:</label>
+        <input type="text" id="usuario_pppoe_conf_roteador_particular">
+    </div>
+    <div class="form-group">
+        <label for="telefones_conf_roteador_particular">2 Telefones atualizados:</label>
+        <input type="text" id="telefones_conf_roteador_particular">
+    </div>
+    <div class="form-group">
+        <label for="horario_contato_conf_roteador_particular">Melhor horário para contato:</label>
+        <input type="text" id="horario_contato_conf_roteador_particular">
+    </div>
+    <div class="form-group">
+        <label for="preferencia_contato_conf_roteador_particular">Prefere contato WhatsApp ou Telefônico?:</label>
+        <input type="text" id="preferencia_contato_conf_roteador_particular">
+    </div>
+    <div class="form-group">
+        <label for="possui_ont_onu_conf_roteador_particular">Cliente possui ONT ou ONU?:</label>
+        <input type="text" id="possui_ont_onu_conf_roteador_particular">
+    </div>
+    <div class="form-group">
+        <label for="conexao_tipo_conf_roteador_particular">Conexão do cliente é Bridge ou Router?:</label>
+        <input type="text" id="conexao_tipo_conf_roteador_particular" placeholder="Verificar SGPI">
+    </div>
+    <div class="form-group">
+        <label for="manter_roteador_comodato_conf_roteador_particular">Cliente vai querer manter o roteador comodato?:</label>
+        <input type="text" id="manter_roteador_comodato_conf_roteador_particular">
+    </div>
+    
+    <button type="button" class="btn" onclick="generateSummary('conf_roteador_particular')">Gerar Resumo</button>
+</div>
+
+<!-- Formulário de Troca de Configuração Wi-Fi -->
+<div class="form-container" id="form-troca_conf_wifi" style="display: none;">
+    <h3>Troca de Configuração Wi-Fi</h3>
+    <div class="form-group">
+        <label for="nome_troca_conf_wifi">Nome completo:</label>
+        <input type="text" id="nome_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="cpf_troca_conf_wifi">CPF:</label>
+        <input type="text" id="cpf_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="usuario_pppoe_troca_conf_wifi">Usuário PPPOE da conexão:</label>
+        <input type="text" id="usuario_pppoe_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="telefones_troca_conf_wifi">2 Telefones atualizados:</label>
+        <input type="text" id="telefones_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="horario_contato_troca_conf_wifi">Melhor horário para contato:</label>
+        <input type="text" id="horario_contato_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="preferencia_contato_troca_conf_wifi">Prefere contato WhatsApp ou Telefônico?:</label>
+        <input type="text" id="preferencia_contato_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="configuracao_solicitada_troca_conf_wifi">Qual configuração o cliente solicita?:</label>
+        <input type="text" id="configuracao_solicitada_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="roteador_comodato_troca_conf_wifi">Qual Roteador é comodato?:</label>
+        <input type="text" id="roteador_comodato_troca_conf_wifi">
+    </div>
+    <div class="form-group">
+        <label for="mais_roteadores_troca_conf_wifi">Possui mais de um roteador?:</label>
+        <input type="text" id="mais_roteadores_troca_conf_wifi">
+    </div>
+    
+    <button type="button" class="btn" onclick="generateSummary('troca_conf_wifi')">Gerar Resumo</button>
+</div>
+
+    <!-- Add the same structure for other sections (Problemas em Redes Sociais, IPTV, etc.) -->
+
+    <!-- Summary Container -->
+    <div class="summary-container" id="summary-container">
+        <h3>Resumo de Atendimento</h3>
+        <pre id="summary-text"></pre>
+    </div>
+
+    <script>
+        function showForm() {
+            let tipoAtendimento = document.getElementById('tipo-atendimento').value;
+            let forms = document.querySelectorAll('.form-container');
+            forms.forEach(form => form.style.display = 'none');
+            if (tipoAtendimento) {
+                document.getElementById('form-' + tipoAtendimento).style.display = 'block';
+            }
+        }
+
+        function generateSummary(tipo) {
+            let form = document.getElementById('form-' + tipo);
+            let inputs = form.querySelectorAll('input');
+            let summary = 'Resumo de Atendimento - ' + tipo + ':\n\n';
+            inputs.forEach(input => {
+                if (input.value) {
+                    summary += input.previousElementSibling.innerText + input.value + '\n';
+                }
+            });
+            document.getElementById('summary-text').textContent = summary;
+            document.getElementById('summary-container').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
